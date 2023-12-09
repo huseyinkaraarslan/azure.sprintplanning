@@ -256,7 +256,7 @@ export default class SprintPlanning extends Vue {
         }
         try {
             this.$store.commit('overlay', {show: true});
-            const url = process.env.BASE_URL + process.env.NODE_ENV !== 'production' ? ':' + (process.env.PORT || 3000) : '';
+            const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : process.env.BASE_URL;
             this.socket = await require('socket.io-client').io.connect(url, {
                 reconnection: false,
                 query: queryObject
