@@ -1,0 +1,75 @@
+@import "variables";
+@import '~vuetify/src/styles/main.sass';
+
+html {
+    .container {
+        padding: 18px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(grey, 0.5);
+        border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(grey, 0.3);
+        border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        height: 50px;
+    }
+
+    .overflow-text {
+        display: flex;
+        span {
+            &.wi-title {
+                display: inline-block;
+                max-width: 225px !important;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                cursor: pointer;
+                align-self: center;
+            }
+        }
+    }
+
+    .base-card {
+        border-radius: 10px;
+        padding: 10px;
+
+        .title {
+            display: block;
+            color: #00cd81;
+            text-align: center;
+        }
+
+        .hr {
+            margin: 10px 0;
+            border: 1px solid #d3d5dc;
+        }
+
+        .actions {
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+
+            .action-btn {
+                background-color: #00cd81 !important;
+                color: #fff;
+                font-weight: 500;
+                letter-spacing: normal;
+            }
+        }
+    }
+
+    .sp-footer {
+        z-index: 1000 !important;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    }
+}
