@@ -117,17 +117,19 @@
                                                               outlined/>
                                             </td>
                                             <td class="pr-0">
-                                                <v-text-field v-model="workItem.point"
+                                                <v-text-field v-model.number="workItem['Story Points']"
                                                               :readonly="!config.isAdmin"
                                                               :disabled="!config.isAdmin"
+                                                              :error="workItem.isSelected && (isNaN(Number(workItem['Story Points'])) || Number(workItem['Story Points']) <= 0)"
                                                               hide-details
                                                               dense
                                                               outlined/>
                                             </td>
                                             <td class="pr-0">
-                                                <v-text-field v-model="workItem.time"
+                                                <v-text-field v-model.number="workItem['Original Estimate']"
                                                               :readonly="!config.isAdmin"
                                                               :disabled="!config.isAdmin"
+                                                              :error="workItem.isSelected && (isNaN(Number(workItem['Original Estimate'])) || Number(workItem['Original Estimate']) <= 0)"
                                                               hide-details
                                                               dense
                                                               outlined/>
@@ -291,10 +293,10 @@
                                                                   outlined/>
                                                 </td>
                                                 <td>
-                                                    <v-text-field v-model="task.time"
+                                                    <v-text-field v-model.number="task.time"
                                                                   :readonly="!config.isAdmin"
                                                                   :disabled="!config.isAdmin"
-                                                                  :error="!task.time"
+                                                                  :error="isNaN(Number(task.time)) || Number(task.time) <= 0"
                                                                   hide-details
                                                                   dense
                                                                   outlined/>

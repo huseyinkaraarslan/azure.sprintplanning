@@ -331,7 +331,7 @@ import Component from 'vue-class-component'
 import WorkItemList from '@/components/SprintPlanning/WorkItemList.vue';
 import {Planning, Config} from '@/model/Planning';
 import {scoringScreenStatus} from '@/enums/scoringScreenStatus';
-import {Prop} from 'vue-property-decorator';
+import {Prop, Watch} from 'vue-property-decorator';
 
 @Component({
     name: 'sp-planning-board',
@@ -519,6 +519,16 @@ export default class PlanningBoard extends Vue {
     created() {
         this.scores.length = this.config?.scoringMetrics?.columnHeaders?.length || 0;
         this.tempScores.length = this.config?.scoringMetrics?.columnHeaders?.length || 0;
+    }
+
+    @Watch('workItemPoint')
+    workItemPointHandler() {
+        this.$emit('workItemPoint', this.workItemPoint);
+    }
+
+    @Watch('workItemTime')
+    workItemTimeHandler() {
+        this.$emit('workItemTime', this.workItemTime);
     }
 }
 </script>

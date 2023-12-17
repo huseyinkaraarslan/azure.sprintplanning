@@ -4,6 +4,8 @@
             <PlanningBoard ref="PlanningBoard"
                            :config="config"
                            :planning="planning"
+                           @workItemPoint="workItemPoint = $event"
+                           @workItemTime="workItemTime = $event"
                            @play="playScoring"
                            @stop="stopScoring"
                            @updateUserScores="updateUserScores"
@@ -188,6 +190,8 @@ export default class SprintPlanning extends Vue {
     scoringKey = 0;
     tempWorkItem = null;
     isShowSprintDialog = false;
+    workItemPoint = 0;
+    workItemTime = 0;
 
     checkAdminConditions() {
         if (this.config?.userName && this.config.workItems && this.config.workItems.length > 0) {
@@ -443,7 +447,12 @@ export default class SprintPlanning extends Vue {
         this.socket.on('open_work_item', () => {
             if (!this.config.isAdmin) {
                 this.$store.commit('overlay', {show: false});
-                this.tempWorkItem = JSON.parse(JSON.stringify(this.planning.workItems[this.planning.workItemIndex]));
+                const workItem = JSON.parse(JSON.stringify(this.planning.workItems[this.planning.workItemIndex]));
+                workItem.currentPoint = workItem['Story Points'];
+                workItem.currentTime = workItem['Original Estimate'];
+                workItem['Story Points'] = this.workItemPoint;
+                workItem['Original Estimate'] = this.workItemTime;
+                this.tempWorkItem = workItem;
             }
         });
 
@@ -599,7 +608,12 @@ export default class SprintPlanning extends Vue {
             if (this.planning.scoringScreenStatus !== scoringScreenStatus.PAUSE) {
                 this.pauseScoring();
             }
-            this.tempWorkItem = JSON.parse(JSON.stringify(this.planning.workItems[this.planning.workItemIndex]));
+            const workItem = JSON.parse(JSON.stringify(this.planning.workItems[this.planning.workItemIndex]));
+            workItem.currentPoint = workItem['Story Points'];
+            workItem.currentTime = workItem['Original Estimate'];
+            workItem['Story Points'] = this.workItemPoint;
+            workItem['Original Estimate'] = this.workItemTime;
+            this.tempWorkItem = workItem;
             this.socket.emit('open_work_item');
         }
     }

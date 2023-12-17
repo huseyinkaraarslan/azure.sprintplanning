@@ -27,7 +27,7 @@
                                 <small v-if="config.isAdmin"
                                        class="ml-3"
                                        style="color: #2196f3">
-                                    {{$t('Current_Point')}} - {{workItem['Story Points']}}
+                                    {{$t('Current_Point')}} - {{workItem.currentPoint}}
                                 </small>
                                 <v-text-field v-model="workItem['Story Points']"
                                               :readonly="!config.isAdmin"
@@ -41,7 +41,7 @@
                                 <small v-if="config.isAdmin"
                                        class="ml-3"
                                        style="color: #2196f3">
-                                    {{$t('Current_Time')}} - {{workItem['Original Estimate']}}
+                                    {{$t('Current_Time')}} - {{workItem.currentTime}}
                                 </small>
                                 <v-text-field v-model="workItem['Original Estimate']"
                                               :readonly="!config.isAdmin"
@@ -272,7 +272,7 @@ export default class WorkItemDialog extends Vue {
     updateWorkItem(startNext = false) {
         const form: any = this.$refs.form;
         if (this.config.isAdmin && form.validate()) {
-            this.$emit('update', {workItem: this.workItem, startNext});
+            this.$emit('update', {workItem: this.workItem, startNext: startNext === true});
         }
     }
 
