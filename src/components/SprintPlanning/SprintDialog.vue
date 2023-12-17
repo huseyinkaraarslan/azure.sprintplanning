@@ -561,7 +561,7 @@ export default class SprintDialog extends Vue {
         let checked = true;
         for (let index = 0; index < workItem.tasks.length; index++) {
             const task = workItem.tasks[index];
-            if (!task.time || Number(task.time) === 0) {
+            if (isNaN(Number(task.time)) || Number(task.time) <= 0) {
                 checked = false;
                 task.errorClass = 'empty-task-time';
             } else {
