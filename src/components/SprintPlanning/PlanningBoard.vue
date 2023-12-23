@@ -408,7 +408,6 @@ export default class PlanningBoard extends Vue {
     }
 
     calculatePointAndTime() {
-        // https://www.excel-easy.com/examples/closest-match.html
         this.workItemPoint = 0;
         this.workItemTime = 0;
         if (this.planning?.users?.length > 0) {

@@ -4,7 +4,7 @@ It allows you to score your current sprints in Azure Devops with your teammates 
 
 Usage:
 - Your teammate who will manage the planning opens the application.
-- After entering the username, it exports the sprint in .csv format from the backlog section of the current sprint in Azure Devops.
+- After entering the username, it exports the sprint in .csv format from the query section in Azure Devops.
 - It imports the sprint backlog in .csv format to the application via the import Csv button in the application.
 - clicks the start button and a planning is created.
 - Copies this URL and forwards it to the teammates who will participate in the planning.

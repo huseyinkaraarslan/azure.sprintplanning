@@ -82,13 +82,13 @@
             </v-row>
             <v-bottom-navigation style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"
                                  horizontal
-                                 absolute
                                  grow
+                                 fixed
                                  color="primary"
                                  background-color="card">
                 <v-btn :disabled="loading"
                        icon
-                       @click="openSettings">
+                       @click="isShowSettings = true;">
                     <span>{{ $t('Settings') }}</span>
                     <v-icon>mdi-cog</v-icon>
                 </v-btn>
@@ -105,6 +105,8 @@
                     <v-icon>mdi-comment-question-outline</v-icon>
                 </v-btn>
             </v-bottom-navigation>
+            <SettingsDialog v-if="isShowSettings"
+                            @close="isShowSettings = false;"/>
         </v-col>
     </v-row>
 </template>
@@ -115,12 +117,16 @@ import Component from 'vue-class-component'
 import {mapActions} from 'vuex';
 import validator from 'validator';
 import {Watch} from 'vue-property-decorator';
-import {version} from '../../package';
+import SettingsDialog from '@/components/SprintPlanning/SettingsDialog.vue';
+import {readme, version} from '../../package';
 import Papa from 'papaparse';
 import {getConfig, setConfig} from '@/services';
 
 @Component({
     name: 'sp-home',
+    components: {
+        SettingsDialog
+    },
     methods: {
         ...mapActions(['setLang']),
         changeLang() {
@@ -137,6 +143,7 @@ export default class Home extends Vue {
     version = version;
     valid = false;
     loading = false;
+    isShowSettings = false;
     userName = '';
     workItems = [];
 
@@ -257,12 +264,8 @@ export default class Home extends Vue {
         }
     }
 
-    openSettings() {
-        return 0;
-    }
-
     openHowToUse() {
-        return 0;
+        window.open(readme, '_blank');
     }
 
     mounted() {

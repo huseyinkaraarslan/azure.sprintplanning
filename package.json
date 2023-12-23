@@ -1,6 +1,7 @@
 {
   "name": "azure.sprintplanning",
   "version": "1.0.0",
+  "readme": "https://github.com/huseyinkaraarslan/azure.sprintplanning?tab=readme-ov-file#azuresprintplanning",
   "private": true,
   "author": "Hüseyin Can Karaarslan",
   "scripts": {

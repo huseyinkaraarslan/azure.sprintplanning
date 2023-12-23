@@ -40,27 +40,28 @@
         <v-bottom-navigation v-else-if="isShowBottomNavigations && !isShowSprintDialog"
                              class="sp-footer"
                              horizontal
-                             absolute
                              grow
+                             fixed
                              color="primary"
                              background-color="card">
-            <v-btn icon
-                   width="30"
-                   @click="isShowSettings = true;">
-                <v-icon class="mx-0">mdi-cog</v-icon>
-            </v-btn>
-            <v-spacer/>
             <v-slide-group show-arrows>
-                <v-slide-item class="px-6">
+                <v-slide-item>
+                    <v-btn icon
+                           @click="isShowSettings = true;">
+                        <v-icon class="mx-0">mdi-cog</v-icon>
+                    </v-btn>
+                </v-slide-item>
+                <v-spacer/>
+                <v-slide-item>
                     <v-btn icon
                            @click="isShowUsers = true">
-                        <v-icon>mdi-account-multiple-outline</v-icon>
+                        <v-icon class="mx-0">mdi-account-multiple-outline</v-icon>
                     </v-btn>
                 </v-slide-item>
                 <v-slide-item>
                     <v-btn icon
                            @click="isShowPointTable = true">
-                        <b :title="$t('Sprint.Point_Table')">PT</b>
+                        <b :title="$t('Point_Table')">PT</b>
                     </v-btn>
                 </v-slide-item>
                 <template v-if="config.isAdmin && !tempWorkItem">
@@ -68,46 +69,46 @@
                         <v-btn icon
                                :disabled="Number(planning.workItemIndex) === -1"
                                @click="refreshScoring">
-                            <v-icon>mdi-refresh</v-icon>
+                            <v-icon class="mx-0">mdi-refresh</v-icon>
                         </v-btn>
                     </v-slide-item>
                     <v-slide-item>
                         <v-btn icon
                                :disabled="Number(planning.workItemIndex) <= 0"
                                @click="playScoring(Number(--planning.workItemIndex))">
-                            <v-icon>mdi-skip-previous</v-icon>
+                            <v-icon class="mx-0">mdi-skip-previous</v-icon>
                         </v-btn>
                     </v-slide-item>
                     <v-slide-item>
                         <v-btn v-if="planning.scoringScreenStatus === scoringScreenStatus.PLAY"
                                icon
                                @click="pauseScoring">
-                            <v-icon>mdi-pause</v-icon>
+                            <v-icon class="mx-0">mdi-pause</v-icon>
                         </v-btn>
                         <v-btn v-else
                                icon
                                :disabled="planning.scoringScreenStatus !== scoringScreenStatus.PAUSE"
                                @click="resumeScoring">
-                            <v-icon>mdi-play</v-icon>
+                            <v-icon class="mx-0">mdi-play</v-icon>
                         </v-btn>
                     </v-slide-item>
                     <v-slide-item>
                         <v-btn icon
                                :disabled="Number(planning.workItemIndex) === -1 || Number(planning.workItemIndex) === (planning.workItems.length - 1)"
                                @click="playScoring(Number(++planning.workItemIndex))">
-                            <v-icon>mdi-skip-next</v-icon>
+                            <v-icon class="mx-0">mdi-skip-next</v-icon>
                         </v-btn>
                     </v-slide-item>
                     <v-slide-item>
                         <v-btn v-if="planning.showScores"
                                icon
                                @click="showHideScores">
-                            <v-icon>mdi-eye-outline</v-icon>
+                            <v-icon class="mx-0">mdi-eye-outline</v-icon>
                         </v-btn>
                         <v-btn v-else
                                icon
                                @click="showHideScores">
-                            <v-icon>mdi-eye-off-outline</v-icon>
+                            <v-icon class="mx-0">mdi-eye-off-outline</v-icon>
                         </v-btn>
                     </v-slide-item>
                     <v-slide-item>
@@ -115,26 +116,19 @@
                                color="primary"
                                :disabled="Number(planning.workItemIndex) === -1"
                                @click="openWorkItemDialog">
-                            <v-icon>mdi-gavel</v-icon>
+                            <v-icon class="mx-0">mdi-gavel</v-icon>
                         </v-btn>
                     </v-slide-item>
                     <v-slide-item v-if="planning.workItems.length > 0">
                         <v-btn icon
                                color="primary"
                                @click="openSprintDialog">
-                            <v-icon>mdi-file-export-outline</v-icon>
+                            <v-icon class="mx-0">mdi-file-export-outline</v-icon>
                         </v-btn>
                     </v-slide-item>
                 </template>
+                <v-spacer/>
             </v-slide-group>
-            <v-spacer/>
-            <v-btn width="30"
-                   @click="isShowSettings = true;">
-                <a href="https://github.com/huseyinkaraarslan"
-                   target="_blank">
-                   HK &copy;2023
-                </a>
-            </v-btn>
         </v-bottom-navigation>
     </v-container>
 </template>
