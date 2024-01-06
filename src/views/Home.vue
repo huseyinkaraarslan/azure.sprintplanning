@@ -217,7 +217,7 @@ export default class Home extends Vue {
                             workItem.title = workItem.Title || workItem['Title 1'] || workItem['Title 2'];
                             workItem.tasks = [];
                             if (i < (workItemIndexses.length - 1)) {
-                                for (let x = (index + 1); x < (workItemIndexses[i + 1] - index - 1); x++) {
+                                for (let x = (index + 1); x < workItemIndexses[i + 1]; x++) {
                                     if (_workItems[x]['Work Item Type'] === 'Task') {
                                         workItem.tasks.push(_workItems[x]);
                                         _workItems[x].title = _workItems[x].Title || _workItems[x]['Title 1'] || _workItems[x]['Title 2'];
@@ -226,7 +226,7 @@ export default class Home extends Vue {
                                     }
                                 }
                             } else if (i === (workItemIndexses.length - 1)) {
-                                for (let x = (index + 1); x < (_workItems.length - 1); x++) {
+                                for (let x = (index + 1); x < _workItems.length; x++) {
                                     if (_workItems[x]['Work Item Type'] === 'Task') {
                                         workItem.tasks.push(_workItems[x]);
                                         _workItems[x].title = _workItems[x].Title || _workItems[x]['Title 1'] || _workItems[x]['Title 2'];

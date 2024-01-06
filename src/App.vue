@@ -81,6 +81,10 @@ export default class App extends Vue {
                     {
                         text: 'Meeting',
                         value: 'Meeting'
+                    },
+                    {
+                        text: 'Design',
+                        value: 'Design'
                     }
                 ]
             });

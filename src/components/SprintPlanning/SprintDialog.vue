@@ -129,7 +129,6 @@
                                                 <v-text-field v-model.number="workItem['Original Estimate']"
                                                               :readonly="!config.isAdmin"
                                                               :disabled="!config.isAdmin"
-                                                              :error="workItem.isSelected && (isNaN(Number(workItem['Original Estimate'])) || Number(workItem['Original Estimate']) <= 0)"
                                                               hide-details
                                                               dense
                                                               outlined/>
@@ -502,8 +501,8 @@ export default class SprintDialog extends Vue {
 
             if (workItem.isSelected === true) {
                 this.groupedWorkItems.selected.count++;
-                this.groupedWorkItems.selected.point += parseFloat(workItem.point || 0);
-                this.groupedWorkItems.selected.time += parseFloat(workItem.time || 0);
+                this.groupedWorkItems.selected.point += parseFloat(workItem['Story Points'] || 0);
+                this.groupedWorkItems.selected.time += parseFloat(workItem['Original Estimate'] || 0);
                 workItem.tasks.forEach(task => {
                     this.groupedWorkItems.selected.totalTaskTime += parseFloat(task.time || 0);
                     const activityIndex = this.groupedWorkItems.activities.findIndex(a => a.activity === task.activity);
@@ -513,8 +512,8 @@ export default class SprintDialog extends Vue {
                 });
             } else {
                 this.groupedWorkItems.unselected.count++;
-                this.groupedWorkItems.unselected.point += parseFloat(workItem.point || 0);
-                this.groupedWorkItems.unselected.time += parseFloat(workItem.time || 0);
+                this.groupedWorkItems.unselected.point += parseFloat(workItem['Story Points'] || 0);
+                this.groupedWorkItems.unselected.time += parseFloat(workItem['Original Estimate'] || 0);
                 workItem.tasks.forEach(task => {
                     this.groupedWorkItems.unselected.totalTaskTime += parseFloat(task.time || 0);
                     const activityIndex = this.groupedWorkItems.activities.findIndex(a => a.activity === task.activity);
@@ -524,8 +523,8 @@ export default class SprintDialog extends Vue {
                 });
             }
             this.groupedWorkItems.total.count++;
-            this.groupedWorkItems.total.point += parseFloat(workItem.point || 0);
-            this.groupedWorkItems.total.time += parseFloat(workItem.time || 0);
+            this.groupedWorkItems.total.point += parseFloat(workItem['Story Points'] || 0);
+            this.groupedWorkItems.total.time += parseFloat(workItem['Original Estimate'] || 0);
             workItem.tasks.forEach(task => {
                 this.groupedWorkItems.total.totalTaskTime += parseFloat(task.time || 0);
                 const activityIndex = this.groupedWorkItems.activities.findIndex(a => a.activity === task.activity);
