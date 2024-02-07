@@ -19,7 +19,7 @@ Usage:
 - By importing this exported file again from the same place in Azure Devops, all items and tasks will be transferred to the Azure environment.
 - While the administrator is performing these operations, other participants will be able to see all the actions taken by the administrator on their own screen.
 
-(https://azuresprintplanning2-ong7u8b6.b4a.run/)
+(https://sprint-planning.onrender.com/)
    
 ## Project setup
 Install project dependencies with
